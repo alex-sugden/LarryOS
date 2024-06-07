@@ -1,20 +1,27 @@
-![banner](assets/qpaper_banner.png)
+>[!WARNING]
+>GPS apps don't work right now because I haven't added them to the various things to make them work.  
+>A: I'm busy  
+>B: I can't debug yet so I'm waiting. In the meantime just use qpaperos  
 
-qpaperOS is a smartwatch firmware implementation for the LILYGO T-Wrist E-Paper ESP32 development board. This repositoy houses the qpaperOS source code along with 3D models and the FreeCAD file of the smartwatch case to make your very own qpaper!
+>[!NOTE]
+>CURRENT VERSION: LarryOS v1.0.0 Pre-Release 2
 
-## The Product
 
-![screenshot](assets/qpaper_screenshot.jpeg)
+![banner](assets/larry_banner.png)
 
-More photos of the complete watch can be found under `assets/photos/` (https://github.com/qewer33/qpaperOS/tree/main/assets/photos)
 
-qpaper is meant to be a minimal and lighweight smartwatch that does what it needs to do: always display time. The low power E-Paper screen of the qpaper allows it to always display the time and other information without having the display blank. The ESP32 wakes up every minute to update the display to show the correct time. More information about how the firmware works can be found in the next section.
+LarryOS, a fork of qpaperOS by qewer33, is a smartwatch firmware implementation for the LILYGO T-Wrist E-Paper ESP32 development board. This repositoy houses the LarryOS source code along with 3D models and the FreeCAD file of the smartwatch case to make your very own qpaper!
 
-qpaper has a battery life of approx. ~3-4 days with a 250 mAh battery. This number is way lower than it should be (the battery should ideally last more than a week but I sometimes even get 2 days for some reason) and I'm not sure if it's a fault of the firmware of if the board is wasting the battery somehow, need to debug.
+Changes from qpaperOS: 
+- Added a GPS app with PPS, number of connected satellites, and current coordinates
+- Added a GPS-based step tracker that should theoretically work, although **IT IS STILL EXPERIMENTAL**.
+Note that these changes WILL negatively impact battery life, given that GPS uses a lot of energy. If your T-Wrist does not have GPS, you want a battery life of more than probably 12 hours (my T-Wrist has not yet arrived, so I cannot test it), or you want something made entirely by a competent programmer whose OS is more stable, check out ![qpaperOS](https://github.com/qewer33/qpaperOS)
 
 ### Assembly
 
-The outer sheell/case of the qpaper is meant to be 3D printed and assembled with 4 short M2 screws. The 3D models and FreeCAD file for the case can be found under `assets/3d/` (https://github.com/qewer33/qpaperOS/tree/main/assets/3d)
+The outer sheell/case of the lWatch is meant to be 3D printed and assembled with 4 short M2 screws. The 3D models and FreeCAD file for the case can be found under `assets/3d/` (https://github.com/qewer33/qpaperOS/tree/main/assets/3d)
+
+THESE CAD FILES WERE MADE BY QEWER33 AND I HAVE NO INTENTION OF MAKING MAJOR CHANGES. I MIGHT, HOWEVER, BRAND THESE CAD FILES WITH LARRYOS. IF YOU WANT QEWER33'S, CHECK HIS OUT AT HIS REPO.
 
 Required parts for assembly:
 - LILYGO T-Wrist E-Paper ESP32 development board
@@ -38,9 +45,9 @@ Install the "ESPTouch" app on your phone, open it and type your WiFi password. L
 ## The Firmware
 
 > [!WARNING]  
-> qpaperOS is not yet finished, the information here might be inaccurate
+> LarryOS is not yet finished, the information here might be inaccurate
 
-qpaperOS is the firmware part of the qpaper project. It is developed to work with the LILYGO T-Wrist E-Paper ESP32 development board. It uses the espressif-esp32-arduino framework and PlatformIO for development.
+LarryOS is the firmware part of the lWatch project. It is developed to work with the LILYGO T-Wrist E-Paper ESP32 development board. It uses the espressif-esp32-arduino framework and PlatformIO for development.
 
 Below are features that are implemented or planned:
 
@@ -51,11 +58,13 @@ Below are features that are implemented or planned:
     - [x] About (minimal example app)
     - [x] WiFi Smartconfig (connect the watch to WiFi via your phone)
     - [ ] GPS Sync
+    - [ ] Alarm app utilizing haptic engine
 - [ ] Themes and theme system
-- [ ] GPS functionality
-- [ ] GPS based step counter
+- [x] GPS functionality (*Still in beta*)
+- [x] GPS based step counter (*Still in beta*)
 - [ ] Weather display
-- [ ] Islamic prayer times display
+- [ ] Smartphone notification forwarding
+- [ ] MAYBE if I have too much time on my hands, a companion LarryOS app for setting timers, forwarding notifications, etc. This would be made available as an ipa to sideload on iOS, ideally, and potentially also as a dmg or exe (I don't have an android phone). It would also take a lot of work so don't expect to see it anytime soon
 
 ### Apps
 
