@@ -1,8 +1,8 @@
 #pragma once
 
 // OS Configuration
-#define DEVICE_NAME            "qewer33's Watch"
-#define PREFS_KEY              "qpaper-os"
+#define DEVICE_NAME            "Alex's lWatch"
+#define PREFS_KEY              "larry-os_1.0"
 
 // Hardware Configuration
 #define GPS_RES                23
@@ -26,8 +26,8 @@
 // Time Configuration
 #define NTP_SERVER1            "pool.ntp.org"
 #define NTP_SERVER2            "time.nist.gov"
-#define GMT_OFFSET_SEC         (3600 * 3)
-#define DAY_LIGHT_OFFSET_SEC   0
+#define GMT_OFFSET_SEC         (3600 * -5)
+#define DAY_LIGHT_OFFSET_SEC   3600
 
 // Software Functions Configuration
 #define UPDATE_WAKEUP_TIMER_US 60 * 1000000
