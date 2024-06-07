@@ -1,5 +1,7 @@
 #include "apps.h"
 
+#include "resources/app_icons.h"
+#include "gps_step_tracker/app_gps_step_tracker.h"
 #include "apps/about/app_about.h"
 #include "apps/gps_sync/app_gps_sync.h"
 #include "apps/wifi_smartconfig/app_wifi_smartconfig.h"
@@ -49,4 +51,14 @@ void drawAppsListUI(GxEPD_Class *display, ESP32Time *rtc, int batteryStatus) {
   display->drawRoundRect(45, 45, 110, 110, 11, GxEPD_BLACK);
   display->drawBitmap(50, 50, apps[currentAppIndex]->icon, 100, 100, GxEPD_BLACK);
   printCenterString(display, apps[currentAppIndex]->name.c_str(), 100, 185);
+
+  //GPS step tracker
+  std::unique_ptr<GPSApp> gpsApp;
+  
+  void initApps() {
+      // Initialize the GPS step tracker app
+      gpsApp = std::make_unique<GPSApp>("GPS Step Tracker", app_icons::gps_icon);
+  
+      // Add the app to the apps array
+      apps.push_back(gpsApp.get());
 }
