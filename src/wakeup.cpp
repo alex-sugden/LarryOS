@@ -1,4 +1,6 @@
-#include "wakeup.h"
+// Define your WiFi credentials here
+const char* wifi_ssid = "Your_SSID";
+const char* wifi_passwd = "Your_Password";
 
 // Setup
 
@@ -14,8 +16,8 @@ void wakeupInit(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *
   display->update();
 
   WiFi.mode(WIFI_STA);
-  WiFi.begin(preferences->getString("wifi_ssid"), preferences->getString("wifi_passwd"));
-  log(LogLevel::SUCCESS, "WiFi initiliazed");
+  WiFi.begin(wifi_ssid, wifi_passwd);
+  log(LogLevel::SUCCESS, "WiFi initialized");
 }
 
 void wakeupLight(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *display, ESP32Time *rtc, Preferences *preferences) {
@@ -28,11 +30,11 @@ void wakeupLight(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class 
 
   preferences->putLong64("prev_time_unix", rtc->getEpoch());
 
-  wakeupCount++;
+  (*wakeupCount)++;
 
   if (*wakeupCount % 30 == 0) {
     WiFi.mode(WIFI_STA);
-    WiFi.begin(preferences->getString("wifi_ssid"), preferences->getString("wifi_passwd"));
+    WiFi.begin(wifi_ssid, wifi_passwd);
     return;
   }
 
@@ -47,13 +49,13 @@ void wakeupFull(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *
   log(LogLevel::INFO, "WAKEUP_FULL");
   setCpuFrequencyMhz(240);
 
-  wakeupCount = 0;
+  *wakeupCount = 0;
 
   initApps();
-  log(LogLevel::SUCCESS, "Apps initiliazed");
+  log(LogLevel::SUCCESS, "Apps initialized");
 
   WiFi.mode(WIFI_STA);
-  WiFi.begin(/*put your SSID here*/, /*put your password here*/);
+  WiFi.begin(wifi_ssid, wifi_passwd);
 
   display->fillScreen(GxEPD_WHITE);
   display->updateWindow(0, 0, GxEPD_WIDTH, GxEPD_HEIGHT);
