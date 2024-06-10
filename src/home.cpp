@@ -36,13 +36,13 @@ void drawHomeUI(GxEPD_Class *display, ESP32Time *rtc, int batteryStatus) {
 
   // Prayer time
   display->drawBitmap(2, 142, icon_prayer_small, 28, 28, GxEPD_BLACK);
-  printLeftString(display, "Isha, 22:10", 34, 164);
+  printLeftString(display, "N/Atides", 34, 164);
 
   // Steps
   display->drawBitmap(2, 170, icon_steps_small, 28, 28, GxEPD_BLACK);
-  printLeftString(display, "7.546", 34, 192);
+  printLeftString(display, "N/Asteps", 34, 192);
 
   // Weather
   display->drawBitmap(170, 170, icon_weather_small, 28, 28, GxEPD_BLACK);
-  printRightString(display, "24°C", 166, 192);
+  printRightString(display, "N/Arains", 166, 192);
 }
