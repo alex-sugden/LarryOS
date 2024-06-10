@@ -53,7 +53,7 @@ void wakeupFull(WakeupFlag *wakeupType, unsigned int *wakeupCount, GxEPD_Class *
   log(LogLevel::SUCCESS, "Apps initiliazed");
 
   WiFi.mode(WIFI_STA);
-  WiFi.begin(preferences->getString("wifi_ssid"), preferences->getString("wifi_passwd"));
+  WiFi.begin(/*put your SSID here*/, /*put your password here*/);
 
   display->fillScreen(GxEPD_WHITE);
   display->updateWindow(0, 0, GxEPD_WIDTH, GxEPD_HEIGHT);
